@@ -19,7 +19,8 @@ class PLController {
     }
 
     async deletelista(req, res) {
-        const listas = await PLC.deleteOne({}) //deleta a primeira lista que aparecer (a ultima criada)
+        const listas = await PLC.findOneAndDelete().sort({createdAt: -1})
+        //const delete = await PLC.deleteOne(listas);
         return res.send('a ultima lista criada foi deletada com sucesso!');
     }
 
