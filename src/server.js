@@ -13,4 +13,8 @@ mongoose.connect('mongodb+srv://doc:doc123@cluster0.g0atg.mongodb.net/powerrange
 app.use(express.json());
 app.use(require('./routes'));
 
-app.listen(process.env.PORT || 3333);
+var port = process.env.PORT || 3333;
+
+console.log(port)
+
+app.listen(port);
