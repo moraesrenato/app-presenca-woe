@@ -10,8 +10,9 @@ routes.get('/listas', PLController.listas);
 routes.delete('/deletelista', PLController.deletelista);
 
 
+routes.get('/qtd', PlayerController.qtd);
 routes.post('/player', PlayerController.store);
 routes.get('/showplayers', PlayerController.showplayers);
-routes.delete('/deleteplayer', PlayerController.deleteplayer);
+routes.delete('/deleteplayer/:id', PlayerController.deleteplayer);
 
 module.exports = routes;
