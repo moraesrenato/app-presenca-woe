@@ -24,6 +24,16 @@ class PLController {
         return res.send('a ultima lista criada foi deletada com sucesso!');
     }
 
+    async listanomes (req, res) {
+        const lista = await PLC.findOne().sort({createdAt: -1}).populate('players');
+
+            lista.prototforEach(element => {
+            console.log(element)
+        })
+
+        return res.json(teste)
+    }
+
 }
 
 module.exports = new PLController();

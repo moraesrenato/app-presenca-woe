@@ -2,7 +2,12 @@ const PC = require('../models/Players');
 const PL = require('../models/PlayersList')
 
 class PlayersController {
-    async store(req,res) { 
+    async store(req,res) {
+
+            if (!req.body.nick || !req.body.class){
+              return res.status(400).send({error: 'Arruma esse nick ai irmão'});
+            }
+
         try {
         const pl = await PL.findOne().sort({createdAt: -1});
         const pc = await PC.create( req.body );

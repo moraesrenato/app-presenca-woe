@@ -14,5 +14,6 @@ routes.get('/qtd', PlayerController.qtd);
 routes.post('/player', PlayerController.store);
 routes.get('/showplayers', PlayerController.showplayers);
 routes.delete('/deleteplayer/:id', PlayerController.deleteplayer);
+routes.get('/listanomes', PLController.listanomes);
 
 module.exports = routes;
