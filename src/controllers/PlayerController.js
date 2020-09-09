@@ -9,7 +9,7 @@ class PlayersController {
         }
 
         try {
-            const playersList = await PlayerList.findOne().sort({ createdAt: -1 });
+            const playersList = await PlayerList.findById(req.params.id);
             const player = { ...req.body };
 
             playersList.players.push(player);

@@ -11,8 +11,7 @@ routes.delete('/deletelista', PlayerListController.deletelista);
 
 
 routes.get('/qtd', PlayerController.qtd);
-routes.post('/player', PlayerController.criar);
-// routes.get('/showplayers', PlayerController.showplayers);
+routes.post('/player/:id', PlayerController.criar);
 routes.delete('/deleteplayer/:id', PlayerController.deleteplayer);
 routes.get('/listanomes', PlayerListController.listanomes);
 
