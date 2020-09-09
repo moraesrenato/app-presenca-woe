@@ -15,4 +15,4 @@ const Players = new mongoose.Schema({
 
 );
 
-module.exports = mongoose.model('Players', Players);
+module.exports = Players

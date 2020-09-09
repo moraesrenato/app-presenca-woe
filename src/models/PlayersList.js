@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Players = require('./Players');
 
 const PlayersList = new mongoose.Schema({
     tittle: {
@@ -9,13 +10,8 @@ const PlayersList = new mongoose.Schema({
         type: Date,
         required: true
     },
-    players: [{
-        type: mongoose.Schema.Types.ObjectId, ref: "Players"
-    }]
+    players: [Players]
 },
-
-{ timestamps: true}
-
-);
+    { timestamps: true });
 
 module.exports = mongoose.model('PlayersList', PlayersList);
