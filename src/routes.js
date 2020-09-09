@@ -2,18 +2,18 @@ const express = require('express');
 
 const routes = express.Router();
 
-const PLController = require('./controllers/PLController');
-const PlayerController = require('./controllers/PlayersController');
+const PlayerListController = require('./controllers/PlayerListController');
+const PlayerController = require('./controllers/PlayerController');
 
-routes.post('/addlista', PLController.store);
-routes.get('/listas', PLController.listas);
-routes.delete('/deletelista', PLController.deletelista);
+routes.post('/addlista', PlayerListController.criar);
+routes.get('/listas', PlayerListController.listas);
+routes.delete('/deletelista', PlayerListController.deletelista);
 
 
 routes.get('/qtd', PlayerController.qtd);
-routes.post('/player', PlayerController.store);
-routes.get('/showplayers', PlayerController.showplayers);
+routes.post('/player', PlayerController.criar);
+// routes.get('/showplayers', PlayerController.showplayers);
 routes.delete('/deleteplayer/:id', PlayerController.deleteplayer);
-routes.get('/listanomes', PLController.listanomes);
+routes.get('/listanomes', PlayerListController.listanomes);
 
 module.exports = routes;
