@@ -3,16 +3,18 @@ const PlayerList = require('../models/PlayersList');
 
 class PlayerListController {
     async criar(req, res) {
-         const data = await PlayerList.find({ date: { $eq: req.body.date } });
-
         if (!req.body.tittle || !req.body.date) {
             return res.status(400).send({ error: 'arruma isso ai que ta errado irmão!' });
         }
 
+        req.body.date = new Date(req.body.date).setHours(0, 0, 0, 0);
+
+        const data = await PlayerList.find({ date: { $eq: req.body.date } });
+
          if (data.length > 0){
              return res.status(400).send({ error: 'uma lista com essa data ja foi criada mano' });
              
-         }  
+         } 
             const playerList = await PlayerList.create(req.body)
 
 
