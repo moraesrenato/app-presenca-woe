@@ -3,32 +3,30 @@ const PlayerList = require('../models/PlayersList');
 
 class PlayerListController {
     async criar(req, res) {
-        const data = await PlayerList.find().sort({ createdAt: -1 }).limit(2);
+         const data = await PlayerList.find({ date: { $eq: req.body.date } });
 
         if (!req.body.tittle || !req.body.date) {
             return res.status(400).send({ error: 'arruma isso ai que ta errado irmão!' });
         }
 
-        if (data[0].date === req.body.date){
-            console.log(data[0].date)
-            return res.status(400).send({ error: 'uma lista com essa data ja foi criada mano' });
-        }   else {
-            console.log(data[0].date)
-             const playerList = await PlayerList.create(req.body)
-         }
+         if (data.length > 0){
+             return res.status(400).send({ error: 'uma lista com essa data ja foi criada mano' });
+             
+         }  
+            const playerList = await PlayerList.create(req.body)
 
 
-        return res.json('sera se foi ?');
+        return res.json(playerList);
     }
 
     async listas(req, res) {
-        const playerList = await PlayerList.find().sort({ createdAt: -1 }).limit(2);
+        const playerList = await PlayerList.find({ date: { $gte: new Date() } }).sort({ createdAt: -1 });
 
         return res.json(playerList);
     }
 
     async lista(req, res) {
-        const playerList = await PlayerList.findById(req.params.id)
+        const playerList = await PlayerList.findById(req.params.id);
 
         return res.json(playerList);
     }
