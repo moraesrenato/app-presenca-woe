@@ -23,19 +23,15 @@ class PlayersController {
     };
 
     async deleteplayer(req, res) {
-        const playerList = await PlayerList.findOne().sort({ createdAt: -1 });
+        const playerList = await PlayerList.findById(req.params.id);
 
-        playerList.players.remove({ _id: req.params.id });
+        playerList.players.remove({ _id: req.params.id2 });
 
         await playerList.save();
 
         return res.json('Confirmação deletada com sucesso... nem queria mesmo');
     }
 
-    async qtd(req, res) {
-        const pl = await PlayerList.findOne().sort({ createdAt: -1 });
-        return res.json(pl.players.length)
-    }
 }
 
 module.exports = new PlayersController();

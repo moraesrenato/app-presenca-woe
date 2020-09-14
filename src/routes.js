@@ -7,13 +7,11 @@ const PlayerController = require('./controllers/PlayerController');
 
 routes.post('/addlista', PlayerListController.criar);
 routes.get('/listas', PlayerListController.listas);
-routes.get('/lista/:id', PlayerListController.listas);
+routes.get('/lista/:id', PlayerListController.lista); //????
 routes.delete('/deletelista/:id', PlayerListController.deletelista);
+routes.get('/listanomes/:id', PlayerListController.listanomes);
 
-
-routes.get('/qtd', PlayerController.qtd);
 routes.post('/player/:id', PlayerController.criar);
-routes.delete('/deleteplayer/:id', PlayerController.deleteplayer);
-routes.get('/listanomes', PlayerListController.listanomes);
+routes.delete('/deleteplayer/:id/:id2', PlayerController.deleteplayer);
 
 module.exports = routes;
