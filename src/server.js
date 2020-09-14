@@ -5,7 +5,7 @@ const app = express();
 
 const server = require('http').Server(app);
 
-mongoose.connect('mongodb+srv://doc:doc123@cluster0.g0atg.mongodb.net/powerranger?retryWrites=true&w=majority',
+mongoose.connect(process.env.DATABASE,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

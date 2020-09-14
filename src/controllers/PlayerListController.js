@@ -13,17 +13,20 @@ class PlayerListController {
     }
 
     async listas(req, res) {
-        const playerList = await PlayerList.find().populate({
-            path: 'players',
-            options: { sort: { createdAt: -1 } }
-        }).sort({ createdAt: -1 });
+        const playerList = await PlayerList.find().sort({ createdAt: -1 });
+
+        return res.json(playerList);
+    }
+
+    async lista(req, res) {
+        const playerList = await PlayerList.findOne({ id: req.params.id});
 
         return res.json(playerList);
     }
 
     async deletelista(req, res) {
-        const listas = await PlayerList.findOneAndDelete().sort({ createdAt: -1 })
-        return res.send('a ultima lista criada foi deletada com sucesso!');
+        const listas = await PlayerList.findByIdAndDelete(req.params.id)
+        return res.send('a lista foi deletada com sucesso!');
     }
 
     async listanomes(req, res) {
