@@ -7,7 +7,7 @@ class PlayerListController {
             return res.status(400).send({ error: 'arruma isso ai que ta errado irmão!' });
         }
 
-        req.body.date = new Date(req.body.date).setHours(0, 0, 0, 0);
+        req.body.date = new Date(req.body.date).setHours(21, 0, 0, 0);
 
         const data = await PlayerList.find({ date: { $eq: req.body.date } });
 
